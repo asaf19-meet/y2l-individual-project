@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>student page</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/css_subject.css') }}">
+    </head>
+
+    <body>
+        <header>
+        <a">Welcome Back {{student.name}}!</a>
+        </header>
+
+        <!-- list of subject that tutors can teach -->
+        
+        <h1> Hello {{student.name}}</h1>
+        <h1> These students can T&L you</h1>
+        {%for other_stu in students%}
+        <p>The student's name is {{other_stu.name}}</p>
+        <p>And you can contact him by calling to this number {{other_stu.phone_number}}</p><br>
+        {%endfor%}
+    </body>
+</html>
+
+

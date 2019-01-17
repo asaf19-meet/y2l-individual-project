@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Student sign up</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+
+    <body>
+                <form action="/student/signup" method="POST">
+                      <input type="text" placeholder="Enter Username" name="username" placeholder="Username" required>
+                      <input type="password" placeholder="Enter Password" name="password" placeholder="Password" required>
+                      <input type="text" placeholder="Enter your name" name="name" placeholder="Name" required>
+                      <input type="text" placeholder="Enter your location" name="location" placeholder="Location" required>
+                      <input type="text" placeholder="Enter your phone number" name="phone_number" placeholder="Phone number" required><br>
+                      <input type="radio" name="nationality" value="palestinian">Palestinian
+                      <input type="radio" name="nationality" value="israeli">Israeli<br>
+                      <input type="radio" name="accept"> I accept the the <a href="#">terms and cnditions</a>
+                      <button type="submit">Signup</button>
+                </form>
+    </body>
+</html>
