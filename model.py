@@ -15,5 +15,5 @@ class Student(Base):
     nationality = Column(String)
     other_stu = Column(PickleType)
 
-    def __repr__(self):
-        return ("Student name: {}, Student's password: {}, Student's Location:{}, Phone number: {}, Nationality: {}, Other student: {}".format(self.name, self.password, self.location, self.phone_number, self.nationality, self.other_stu))
+    #def __repr__(self):
+    #    return ("Student name: {}, Student's password: {}, Student's Location:{}, Phone number: {}, Nationality: {}, Other student: {}".format(self.name, self.password, self.location, self.phone_number, self.nationality, self.other_stu))

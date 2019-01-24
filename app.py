@@ -4,30 +4,45 @@ from databases import *
 UPLOAD_FOLDER = '/path/to/the/uploads'
 app = Flask(__name__)
 
+app.secret_key = 'super_secret_key'
+
 
 # App routing code here
 @app.route('/', methods=["POST", "GET"])
 def home():
-    if session.get('logged_in_student') == True:
+    print(session)
+    if 'logged_in_student' in session and session['logged_in_student'] == True:
         user_stu = get_student_by_username(session["username"])
-        students = student.other_stu
+        students = user_stu.other_stu
         return render_template("student_page.html", student = user_stu, students = students)
     else:
         return render_template("home.html")
 
 
 
-@app.route('/student/stuednt_option_page', methods=['GET', 'POST'])
-def stuednt_option_page():
+@app.route('/student/student_option_page', methods=['GET', 'POST'])
+def student_option_page():
     user_stu = get_student_by_username(session["username"])
     if request.method == 'GET':
-        return render_template('student_option_page.html',students = get_students())
+        students = get_students()
+        students.remove(user_stu)
+        return render_template('student_option_page.html',students = students)
     else: 
-        other_stu_username = request.form['requested_student']
-        other_stu = get_student_by_username(other_stu_username)
+        print("Got post")
+        other_stu = request.form['requested_student']
         connect_student_student(other_stu,user_stu)
-        return redirect(url_for('stuednt_option_page',username = tutor_username))
+        return render_template('student_option_page.html',username = user_stu)
+
+
     
+@app.route('/student/student_page', methods=['GET', 'POST'])
+def student_page():
+    username = session["username"]
+    student =get_student_by_username(username)
+    return render_template('student_page.html', student = student)
+
+
+
 
 
 @app.route('/student/login', methods=['GET', 'POST'])
@@ -51,13 +66,13 @@ def student_login():
 @app.route("/student/logout")
 def student_logout():
     session['logged_in_student'] = False
-    return home()
+    return render_template("home.html")
 
 
 @app.route("/student/signup", methods=['GET', 'POST'])
 def student_signup():
     if request.method == 'GET':
-        return redirect(url_for('student_signup'))
+        return render_template('student_signup.html')
     else:
         username = request.form['username']
         password = request.form['password']
@@ -68,7 +83,6 @@ def student_signup():
         add_student(username,password,name,location,phone_number,nationality)
         session['logged_in_student'] = True
         session["username"] = username
-
         return redirect(url_for('home'))
            
 # Running the Flask app

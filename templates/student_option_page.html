@@ -140,7 +140,7 @@
 {%for student in students%}
 	$("#{{student.username}}").on("click", function () {
 	var username_s = "{{student.username}}"
-    $.post( "/student/student_option_page/{{ subject }}", {
+    $.post( "/student/student_option_page", {
     	requested_student: username_s ,
 	});
 	$("#img_{{student.username}}").attr('src', "/static/img/img_avatar_chosen.png");
