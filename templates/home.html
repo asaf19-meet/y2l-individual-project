@@ -1,11 +1,16 @@
 <!DOCTYPE html>
+<html>
   <head>
     <title>T&l-Teach and Learn</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/home.css') }}">
   </head>
 
   <body>
-  	<a type="submit" href = "{{url_for('student_login')}}">Log in</a>
-  	<a type="submit" href = "{{url_for('student_signup')}}">Sign up</a>
+  	<div class="top">
+  	<h1>Welcome to Teach and Learn</h1>
+  	<h3>In this site you can learn Arabic and Hebrew through communication with other students</h3>
+  	<div class="button" id="login"> <a type="submit" href = "{{url_for('student_login')}}">Log in</a> </div>
+  	<div class="button" id="signup"> <a type="submit" href = "{{url_for('student_signup')}}">Sign up</a> </div>
+    </div>
   </body>
-
 </html>

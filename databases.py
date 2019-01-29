@@ -49,3 +49,4 @@ def connect_student_student(student_username,other_stu_username):
     dession.commit()
 
 print([(a.other_stu,a.name) for a in get_students()])
+#add_student('asaf', 'asaf', 'asaf', 'asaf', '053-2234444', 'israli')
