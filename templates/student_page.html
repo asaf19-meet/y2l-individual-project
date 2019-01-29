@@ -18,7 +18,8 @@
         <p>The student's name is {{other_stu.name}}</p>
         <p>And you can contact him by calling to this number {{other_stu.phone_number}}</p><br>
         {%endfor%}
-        <a type="submit" href = "{{url_for('student_option_page')}}">Look for other students</a>
+        <a type="submit" href = "{{url_for('student_option_page')}}">Look for other students</a><br>
+        <a type="submit" href = "{{url_for('student_logout')}}">Log out</a>
     </body>
 </html>
 
