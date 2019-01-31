@@ -10,6 +10,7 @@
         <h1> These students can T&L you</h1>
         {%for other_stu in students%}
         <p>The student's name is {{other_stu.name}}</p>
+        <p>His natioality is {{other_stu.nationality}}</p>
         <p>And you can contact him by calling to this number {{other_stu.phone_number}}</p><br>
         {%endfor%}
         <a type="submit" href = "{{url_for('student_option_page')}}">Look for other students</a><br>
